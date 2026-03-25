@@ -49,6 +49,34 @@
   }
 }
 
+/* Scroll-triggered entrance animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section heading fade-in */
+.animate-heading {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+}
+
+.animate-heading.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Print styles */
 @media print {
   header,

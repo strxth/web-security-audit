@@ -1,7 +1,9 @@
 'use client';
 
-import { Moon, Sun, Printer } from 'lucide-react';
+import { Moon, Sun, FileDown } from 'lucide-react';
 import ScoreGauge from './ScoreGauge';
+import type { Check } from '@/types';
+import { generatePdfReport } from '@/lib/generatePdfReport';
 
 interface Props {
   score: number;
@@ -9,6 +11,8 @@ interface Props {
   totalCount: number;
   dark: boolean;
   onToggleDark: () => void;
+  checks: Check[];
+  checked: Record<string, boolean>;
 }
 
 export default function Header({
@@ -17,10 +21,16 @@ export default function Header({
   totalCount,
   dark,
   onToggleDark,
+  checks,
+  checked,
 }: Props) {
   const pct = Math.round(score);
   const progressColor =
     pct >= 80 ? 'bg-green-500' : pct >= 50 ? 'bg-orange-400' : 'bg-red-500';
+
+  function handleExportPdf() {
+    generatePdfReport(checks, checked, score, passedCount);
+  }
 
   return (
     <>
@@ -59,11 +69,11 @@ export default function Header({
             {/* Actions */}
             <div className="flex items-center gap-2">
               <button
-                onClick={() => window.print()}
+                onClick={handleExportPdf}
                 className="rounded-lg p-2 text-slate-400 transition hover:bg-slate-100 hover:text-slate-600 dark:text-slate-500 dark:hover:bg-slate-800 dark:hover:text-slate-300"
-                title="Print report"
+                title="Export PDF report"
               >
-                <Printer className="h-4 w-4" />
+                <FileDown className="h-4 w-4" />
               </button>
               <button
                 onClick={onToggleDark}

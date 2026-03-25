@@ -90,6 +90,8 @@ export default function AuditDashboard() {
         totalCount={totalCount}
         dark={dark}
         onToggleDark={toggleDark}
+        checks={CHECKS}
+        checked={checked}
       />
 
       <main className="mx-auto max-w-6xl px-4 pb-16 pt-6">
