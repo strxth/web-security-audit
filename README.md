@@ -22,6 +22,7 @@ This project is built to be open, accessible, and easily extensible for the comm
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Icons**: [Lucide React](https://lucide.dev/)
 - **Linting & Formatting**: ESLint & Prettier
+- **Analytics**: [Microsoft Clarity](https://clarity.microsoft.com/)
 
 ## 📂 Project Structure
 
@@ -62,7 +63,19 @@ Ensure you have **Node.js** (v20 or newer recommended) installed on your machine
    pnpm install
    ```
 
-3. Start the development server:
+3. Set up environment variables:
+
+   ```bash
+   cp .env.example .env.local
+   ```
+
+   Then open `.env.local` and fill in your values:
+
+   | Variable                 | Description                                                         |
+   | ------------------------ | ------------------------------------------------------------------- |
+   | `NEXT_PUBLIC_CLARITY_ID` | Your [Microsoft Clarity](https://clarity.microsoft.com/) project ID |
+
+4. Start the development server:
 
    ```bash
    npm run dev
@@ -72,7 +85,7 @@ Ensure you have **Node.js** (v20 or newer recommended) installed on your machine
    pnpm dev
    ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
 ## 🐳 Docker Deployment
 
